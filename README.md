@@ -1,2 +1,3 @@
-# heldenrechner
+# Heldenrechner
+
 Berechnet optimale Verwendung von Kombinationen
