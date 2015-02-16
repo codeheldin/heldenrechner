@@ -177,7 +177,7 @@
         var select_button = $('<button>auswählen</button>').button().on('click', function() {
             heldenrechner.select_mandant(uuid);
         });
-        var rename_button = $('<button>umbennenen</button>').button().on('click', function() {
+        var rename_button = $('<button>umbenennen</button>').button().on('click', function() {
             heldenrechner.rename_mandant(uuid);
         });
         var delete_button = $('<button>löschen</button>').button().on('click', function() {
