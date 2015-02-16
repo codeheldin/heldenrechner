@@ -36,3 +36,26 @@ div#restore-dialog form textarea {
     height: 25em;
     width: 40em;
 }
+
+footer {
+    margin-top: 3em;
+    background-color: #ffffff;
+    border: 0.1em solid #666666;
+    color: #666666;
+    border-radius: 1em;
+    display: inline-block;
+    width: auto;
+    clear: both;
+    float: right;
+    padding: 1em;
+}
+
+footer p {
+    font-size: 1.25em;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+footer p img {
+    vertical-align: middle;
+}
