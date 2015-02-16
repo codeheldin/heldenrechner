@@ -9,14 +9,10 @@ div#main_tabs {
     display: none;
 }
 
-div#show-local-storage {
-    font-family: monospace;
-}
-
 div#player-rename-dialog,
 div#backup-dialog,
 div#restore-dialog,
-div#show-local-storage
+div#reset-dialog
 {
     display: none;
 }

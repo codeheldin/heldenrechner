@@ -296,6 +296,31 @@
         });
     };
     
+    __.reset_function = function() {
+        $('#reset-button').button().on('click', function() {
+            $('#reset-dialog').dialog({
+                modal: true,
+                buttons: {
+                    Ja: function() {
+                        __.restore('{}');
+                        $(this).dialog('close');                    
+                    },
+                    Nein: function() {
+                        $(this).dialog('close');                    
+                    },
+                    Abbrechen: function() {
+                        $(this).dialog('close');                    
+                    }
+                },
+                closeOnEscape: true,
+                autoOpen: true,
+                title: 'Datenwiederherstellung',
+                resizable: false,
+                width: 'auto'
+            });                
+        });
+    };
+    
     __.loader = function() {
         $('#script_loader').dialog({
             modal: true,
@@ -318,6 +343,7 @@
                 __.commit();
             }
             __.backup_restore();
+            __.reset_function();
             __.prepare_forms();
             __.load_mandanten();
             $('#script_loader').dialog('close');
