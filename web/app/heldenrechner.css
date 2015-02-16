@@ -5,16 +5,15 @@ body {
     color: #000000;
 }
 
-div#main_tabs,
-div#show-local-storage {
+div#main_tabs {
     display: none;
 }
 
-div#show-local-storage {
-    font-family: monospace;
-}
-
-div#player-rename-dialog {
+div#player-rename-dialog,
+div#backup-dialog,
+div#restore-dialog,
+div#reset-dialog
+{
     display: none;
 }
 
@@ -27,5 +26,13 @@ div#player-rename-dialog {
 }
 
 fieldset {
-    margin-top: 3em;
+    margin-top: 2em;
+}
+
+div#backup-dialog form textarea,
+div#restore-dialog form textarea {
+    font-family: monospace;
+    font-size: 1em;
+    height: 25em;
+    width: 40em;
 }
