@@ -1,0 +1,29 @@
+body {
+    background-color: #cccccc;
+    color: #000000;
+}
+
+div#main_tabs,
+div#show-local-storage {
+    display: none;
+}
+
+div#show-local-storage {
+    font-family: monospace;
+}
+
+div#player-rename-dialog {
+    display: none;
+}
+
+.selected_mandant {
+    font-weight: bold !important;
+}
+
+.text-right {
+    text-align: right !important;    
+}
+
+fieldset {
+    margin-top: 3em;
+}
