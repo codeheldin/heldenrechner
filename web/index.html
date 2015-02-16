@@ -42,6 +42,84 @@
             </div>
             <div id="tab_inventar">
                 <p class="text-right">Ausgewählter Spieler: <span class="selected_mandant"></span></p>
+                <form method="post" action="#">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Typ</th>
+                                <th>Qualität</th>
+                                <th>Werte</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" id="item_name" name="item_name"/>
+                                </td>
+                                <td>
+                                    <input type="radio" id="item_type_helmet" name="item_type" value="Helm" /><label for="item_type_helmet">Helm</label><br />
+                                    <input type="radio" id="item_type_weapon" name="item_type" value="Waffe" /><label for="item_type_weapon">Waffe</label><br />
+                                    <input type="radio" id="item_type_armor" name="item_type" value="Rüstung" /><label for="item_type_armor">Rüstung</label><br />
+                                    <input type="radio" id="item_type_artifact" name="item_type" value="Artefakt" /><label for="item_type_artifact">Artefakt</label><br />
+                                </td>
+                                <td>
+                                    <input type="radio" id="item_quality_unique" name="item_quality" value="Einzigartig" /><label for="item_quality_unique">Einzigartig</label><br />
+                                    <input type="radio" id="item_quality_legendary" name="item_quality" value="Legendär" /><label for="item_quality_legendary">Legendär</label><br />
+                                    <input type="radio" id="item_quality_epic" name="item_quality" value="Episch" /><label for="item_quality_epic">Episch</label><br />
+                                    <input type="radio" id="item_quality_rare" name="item_quality" value="Selten" /><label for="item_quality_rare">Selten</label><br />
+                                    <input type="radio" id="item_quality_normal" name="item_quality" value="Gewöhnlich" /><label for="item_quality_normal">Gewöhnlich</label><br />
+                                </td>
+                                <td>
+                                    <p>
+                                        <input type="checkbox" id="item_attribute_1" name="item_attribute_1" />
+                                        <select id="item_attribute_1_type" name="item_attribute_1_type" size="1">
+                                            <option>NK</option>
+                                            <option>FK</option>
+                                            <option>empty</option>
+                                        </select>
+                                        <input type="text" id="item_attribute_1_value" name="item_attribute_1_value" />
+                                    </p>
+                                    <p>
+                                        <input type="checkbox" id="item_attribute_2" name="item_attribute_2" />
+                                        <select id="item_attribute_2_type" name="item_attribute_2_type" size="1">
+                                            <option>NK</option>
+                                            <option>FK</option>
+                                            <option>empty</option>
+                                        </select>
+                                        <input type="text" id="item_attribute_2_value" name="item_attribute_1_value" />
+                                    </p>
+                                    <p>
+                                        <input type="checkbox" id="item_attribute_3" name="item_attribute_3" />
+                                        <select id="item_attribute_3_type" name="item_attribute_3_type" size="1">
+                                            <option>NK</option>
+                                            <option>FK</option>
+                                            <option>empty</option>
+                                        </select>
+                                        <input type="text" id="item_attribute_3_value" name="item_attribute_3_value" />
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <input type="reset" id="reset_item" name="reset_item" value="zurücksetzen" />
+                    <input type="submit" id="add_item" name="add_item" value="Hinzufügen"/>
+                </form>
+                <fieldset>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Typ</th>
+                                <th>Qualität</th>
+                                <th>Werte</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </fieldset>
+
             </div>
             <div id="tab_berechnungen">
             </div>
