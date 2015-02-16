@@ -121,7 +121,7 @@
                     $(this).dialog('close');
     		}
             }
-        }).html('Soll der Spieler <b>' + player + '</b> wirklich gelöscht werden?<br />Alle seine Einstellungen und Inventories gehen verloren!');
+        }).html('Soll der Spieler <b>' + player + '</b> wirklich gelöscht werden?<br /><br />Alle seine Einstellungen und Inventories gehen verloren!');
     };
     
     __.rename_mandant = function(player, new_name) {
@@ -155,6 +155,7 @@
         }
         var old_name = player.name;
         $('#player-rename-dialog input[type="text"]').val(old_name);
+        $('#player-rename-dialog input[type="text"]').select();
         $("#player-rename-dialog").dialog({
             autoOpen: true,
             modal: true,
