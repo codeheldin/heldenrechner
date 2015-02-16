@@ -46,14 +46,35 @@
             <div id="tab_berechnungen">
             </div>
         </div>
-        <p><a href="#show-local-storage">Gespeicherten Inhalt anzeigen</a></p>
-        <div id="show-local-storage"></div>
+        <p>
+            <button id="backup-button">Datensicherung</button>
+            <button id="restore-button">Datenwiederherstellung</button>
+        </p>
         <div id="confirm-dialog"></div>
         <div id="player-rename-dialog">
             <form method="post" action="#">
                 <label for="player_new_name">Neuer Name:</label>
                 <input type="text" name="player_new_name" id="player_new_name" />
             </form>
+        </div>
+        <div id="backup-dialog">
+            <form method="post" action="#">
+                <p>Speichere diese Daten in einer UTF-8-Textdatei.</p>
+                <fieldset>
+                    <legend>Gespeicherte Daten</legend>
+                    <textarea name="backup-json" id="backup-json"></textarea>
+                </fieldset>
+            </form>
+        </div>
+        <div id="restore-dialog">
+            <form method="post" action="#">
+                <p>Füge hier die Daten aus der Textdatei ein.</p>
+                <fieldset>
+                    <legend>Gespeicherte Daten</legend>
+                    <textarea name="restore-json" id="restore-json"></textarea>
+                </fieldset>
+                <p><b>Achtung!</b> Das überschreibt alles andere, was bisher gespeichert wurde!</p>
+            </form>            
         </div>
     </body>
 </html>

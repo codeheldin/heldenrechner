@@ -225,20 +225,74 @@
         });
     };
     
-    __.show_local_storage = function() {
-        $('a[href="#show-local-storage"]').on('click', function() {
-            var pre = $('<pre></pre>');
-            var str = JSON.stringify(window.localStorage['heldenrechner'], null, '\t');
-            $(pre).html(str);
-            $('#show-local-storage').html('');
-            $('#show-local-storage').append(pre);
-            $('#show-local-storage').dialog({
-                modal: true,
-                buttons: {},
-                closeOnEscape: true,
-                autoOpen: true,
-                title: 'Inhalt des lokalen Speichers'
-            });
+    heldenrechner.backup = function() {
+        var wdata = eval(JSON.stringify(window.localStorage['heldenrechner']));
+        $('#backup-dialog form textarea').val(wdata).prop('readonly', true).select();
+        $('#backup-dialog').dialog({
+            modal: true,
+            buttons: {},
+            closeOnEscape: true,
+            autoOpen: true,
+            title: 'Datensicherung',
+            resizable: false,
+            width: 'auto'
+        });
+    };
+    
+    __.restore = function(data) {
+        if ((null === data) || (data.length <= 0)) {
+            return;
+        }
+        try {
+            var data_object = JSON.parse(data);
+            _mandant = null;
+            _data = data_object;
+            __.commit();
+            __.load_mandanten();
+            $('#restore-dialog').dialog('close');
+            $('#main_tabs ul li a')[0].click();
+            $('#main_tabs').tabs('option', 'disabled', [1, 2]);
+        }
+        catch (e) {
+            $('#restore-dialog form textarea').val('Daten ungültig: ' + e).select();
+        }
+    };
+    
+    heldenrechner.restore = function() {
+        $('#restore-dialog form textarea').val('');
+        $('#restore-dialog').dialog({
+            modal: true,
+            buttons: {
+                Wiederherstellen: function() {
+                    __.restore($('#restore-dialog form textarea').val());
+                },
+                Abbrechen: function() {
+                    $(this).dialog('close');                    
+                }
+            },
+            closeOnEscape: true,
+            autoOpen: true,
+            title: 'Datenwiederherstellung',
+            resizable: false,
+            width: 'auto'
+        });        
+    };
+    
+    __.backup_restore = function() {
+        $('#backup-button').button().on('click', function() {
+            heldenrechner.backup();
+        });
+        $('#backup-dialog form').on('submit', function(event) {
+            event.preventDefault();
+            return false;
+        });
+        $('#restore-button').button().on('click', function() {
+            heldenrechner.restore();
+        });
+        $('#restore-dialog form').on('submit', function(event) {
+            event.preventDefault();
+            $(this).parent().parent().find('button')[1].click();
+            return false;
         });
     };
     
@@ -263,7 +317,7 @@
             else {
                 __.commit();
             }
-            __.show_local_storage();
+            __.backup_restore();
             __.prepare_forms();
             __.load_mandanten();
             $('#script_loader').dialog('close');
