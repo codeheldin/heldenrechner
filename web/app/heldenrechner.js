@@ -211,6 +211,49 @@
         }
     };
     
+    heldenrechner.add_item = function(uuid) {
+        if (!(_mandant.inventory)) {
+            _mandant.inventory = [];
+            __.commit();
+        }
+        var item = { uuid: __.uuid() };
+        item.name = $('#item_name');
+        item.quality = $('#item_quality');
+        item.type = $('#item_type');
+        item.level = $('#item_level');
+ 
+        item.attributes = [];
+        
+        var checked = 0;
+        if ($(".item_attribute_1").prop('checked',true)) {
+            var attribute=[];
+            attribute.att_type = $( "#item_attribute_1_type" ).selectmenu();
+            attribute.att_value = $( "#item_attribute_1_value" ).val();
+            checked++;
+            item.attributes.push(attribute);
+        }
+        if ($(".item_attribute_2").prop('checked',true)) {
+            var attribute=[];
+            attribute.att_type = $( "#item_attribute_2_type" ).selectmenu();
+            attribute.att_value = $( "#item_attribute_2_value" ).val();
+            item.attributes.push(attribute);
+        }
+        if ($(".item_attribute_3").prop('checked',true)) {
+            var attribute=[];
+            attribute.att_type = $( "#item_attribute_3_type" ).selectmenu();
+            attribute.att_value = $( "#item_attribute_3_value" ).val();
+            item.attributes.push(attribute);
+        }
+        
+        _mandant.inventory.push(item);
+        __.commit();
+
+    };
+    
+    __.showInventory = function() {
+        
+    }
+    
     __.prepare_forms = function() {
         $('form#new_player_form').on('submit', function(event) {
             event.preventDefault();
