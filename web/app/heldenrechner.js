@@ -13,6 +13,16 @@
     var _mandant = null;
     var _item = null;
     
+    __.Base64 = {
+        encode: function(input) {
+            return btoa(input);
+        },
+
+        decode: function(input) {
+            return atob(input);
+        }
+    };
+    
     __.uuid = function() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
             var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
@@ -326,6 +336,7 @@
     
     heldenrechner.backup = function() {
         var wdata = eval(JSON.stringify(window.localStorage['heldenrechner']));
+        wdata = __.Base64.encode(wdata);
         $('#backup-dialog form textarea').val(wdata).prop('readonly', true).select();
         $('#backup-dialog').dialog({
             modal: true,
@@ -343,7 +354,10 @@
             return;
         }
         try {
-            var data_object = JSON.parse(data);
+            var data_object = {};
+            if (data !== '{}') {
+                data_object = JSON.parse(__.Base64.decode(data));
+            }
             _mandant = null;
             _data = data_object;
             __.commit();
