@@ -16,21 +16,11 @@
         </div>
         <div id="main_tabs">
             <ul>
-                <li><a href="#tab_mandanten">Mandanten</a></li>
+                <li><a href="#tab_mandanten">Spieler</a></li>
                 <li><a href="#tab_inventar">Inventar</a></li>
                 <li><a href="#tab_berechnungen">Berechnungen</a></li>
             </ul>
             <div id="tab_mandanten">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Spielername</th>
-                            <th>Aktionen</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
                 <form method="post" action="#" id="new_player_form">
                     <fieldset>
                         <legend>Neuen Spieler anlegen</legend>
@@ -39,6 +29,16 @@
                         <input type="submit" id="add_new_player" name="add_new_player" value="Spieler anlegen" />
                     </fieldset>
                 </form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Spielername</th>
+                            <th class="minimum">Aktionen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
             <div id="tab_inventar">
                 <p class="text-right">Ausgewählter Spieler: <span class="selected_mandant"></span></p>
