@@ -11,6 +11,7 @@
     
     var _data = {};
     var _mandant = null;
+    var _item = null;
     
     __.uuid = function() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -252,20 +253,66 @@
     
     __.showInventory = function() {
         
-    }
+    };
+    
+    __.submit_inventory_form = function() {
+        window.console.info('Inventory Form submitted!');
+    };
+    
+    __.new_item_dialog = function() {
+        _item = {
+            is_new: true,
+            uuid: __.uuid()
+        };
+        $('#inventory-dialog').dialog({
+            autoOpen: true,
+            modal: true,
+            title: 'Neuen Gegenstand anlegen',
+            width: 'auto',
+            buttons: {
+    		OK: function() {
+                    __.submit_inventory_form();
+                    $(this).dialog('close');
+    		},
+    		Abbrechen: function() {
+                    $(this).dialog('close');
+    		}
+            },
+            open: function() {
+                $('#inventory-dialog select').selectmenu();
+                $('#inventory-dialog #item_level').spinner({
+                    min: 0,
+                    max: 20,
+                    step: 1,
+                    numberFormat: 'n'
+                });
+            }
+        });
+    };
     
     __.prepare_forms = function() {
+        $('input[type="text"]').addClass('ui-widget ui-widget-content ui-corner-all');
         $('form#new_player_form').on('submit', function(event) {
             event.preventDefault();
             heldenrechner.add_mandant($('#new_player_name', this).val());
             return false;
         });
-        $('form#new_player_form input[type="submit"]').button();
+        $('form#new_player_form input[type="submit"]').button({icons: { primary: 'ui-icon-plusthick' }});
         $('#player-rename-dialog form').on('submit', function(event) {
             event.preventDefault();
             $(this).parent().parent().find('button')[1].click();
             return false;
         });
+        $('#inventory-dialog form').on('submit', function(event) {
+            event.preventDefault();
+            $(this).parent().parent().find('button')[1].click();
+            return false;
+        });
+        $('#inventory-add-item').button({icons: { primary: 'ui-icon-plusthick' }}).on('click', function() {
+            __.new_item_dialog();
+        });
+        $('#inventory-dialog fieldset').css('vertical-align', 'top');
+        $('#inventory-dialog select').css('width', '15em');
     };
     
     heldenrechner.backup = function() {

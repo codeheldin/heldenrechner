@@ -8,6 +8,7 @@
         <script charset="utf-8" src="app/jq/ui/jquery-ui.min.js" type="text/javascript"></script>
         <script charset="utf-8" src="app/heldenrechner.js" type="text/javascript"></script>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body id="application_body">
         <h1>Der Heldenrechner</h1>
@@ -42,117 +43,23 @@
             </div>
             <div id="tab_inventar">
                 <p class="text-right">Ausgewählter Spieler: <span class="selected_mandant"></span></p>
-                <form method="post" action="#">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Typ</th>
-                                <th>Qualität</th>
-                                <th>Werte</th>
-                                <th>Aktionen</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <input type="text" id="item_name" name="item_name"/>
-                                </td>
-                                <td>
-                                    <input type="radio" id="item_type_helmet" name="item_type" value="Helm" /><label for="item_type_helmet">Helm</label><br />
-                                    <input type="radio" id="item_type_weapon" name="item_type" value="Waffe" /><label for="item_type_weapon">Waffe</label><br />
-                                    <input type="radio" id="item_type_armor" name="item_type" value="Rüstung" /><label for="item_type_armor">Rüstung</label><br />
-                                    <input type="radio" id="item_type_artifact" name="item_type" value="Artefakt" /><label for="item_type_artifact">Artefakt</label><br />
-                                </td>
-                                <td>
-                                    <input type="radio" id="item_quality_unique" name="item_quality" value="4" /><label for="item_quality_unique">Einzigartig</label><br />
-                                    <input type="radio" id="item_quality_legendary" name="item_quality" value="3" /><label for="item_quality_legendary">Legendär</label><br />
-                                    <input type="radio" id="item_quality_epic" name="item_quality" value="2" /><label for="item_quality_epic">Episch</label><br />
-                                    <input type="radio" id="item_quality_rare" name="item_quality" value="1" /><label for="item_quality_rare">Selten</label><br />
-                                    <input type="radio" id="item_quality_normal" name="item_quality" value="0" /><label for="item_quality_normal">Gewöhnlich</label><br />
-                                </td>
-                                <td>
-                                    <p>
-                                        <input type="checkbox" id="item_attribute_1" name="item_attribute_1" />
-                                        <select id="item_attribute_1_type" name="item_attribute_1_type" size="1">
-                                            <option>NK</option>
-                                            <option>FK</option>
-                                            <option>empty</option>
-                                        </select>
-                                        <input type="text" id="item_attribute_1_value" name="item_attribute_1_value" />
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" id="item_attribute_2" name="item_attribute_2" />
-                                        <select id="item_attribute_2_type" name="item_attribute_2_type" size="1">
-                                            <option>NK</option>
-                                            <option>FK</option>
-                                            <option>empty</option>
-                                        </select>
-                                        <input type="text" id="item_attribute_2_value" name="item_attribute_1_value" />
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" id="item_attribute_3" name="item_attribute_3" />
-                                        <select id="item_attribute_3_type" name="item_attribute_3_type" size="1">
-                                            <option>NK</option>
-                                            <option>FK</option>
-                                            <option>empty</option>
-                                        </select>
-                                        <input type="text" id="item_attribute_3_value" name="item_attribute_3_value" />
-                                    </p>
-                                </td>
-                                <td>
-                                    <label for="item_level">Stufe:</label>
-                                    <select id="item_level" name="item_level" size="1">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
-                                        <option>9</option>
-                                        <option>10</option>
-                                        <option>11</option>
-                                        <option>12</option>
-                                        <option>13</option>
-                                        <option>14</option>
-                                        <option>15</option>
-                                        <option>16</option>
-                                        <option>17</option>
-                                        <option>18</option>
-                                        <option>19</option>
-                                        <option>20</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <input type="submit" id="delete_item" name="delete_item" value="Löschen" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <input type="reset" id="reset_item" name="reset_item" value="zurücksetzen" />
-                    <input type="submit" id="add_item" name="add_item" value="Hinzufügen"/>
-                </form>
-                <fieldset>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Typ</th>
-                                <th>Qualität</th>
-                                <th>Werte</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </fieldset>
-
+                <p><button id="inventory-add-item">Gegenstand hinzufügen</button></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Typ</th>
+                            <th>Qualität</th>
+                            <th>Werte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
             <div id="tab_berechnungen">
                 <form method="post">
-                    <input type="button" id="calc" value="Berechnen">
+                    <input type="button" id="calc" value="Berechnen" />
                 </form>
                 <textarea name="result" cols="50" rows="20"></textarea>
             </div>
@@ -191,6 +98,66 @@
         <div id="reset-dialog">
             <p><b>Dies wird alle gespeicherten Daten zurücksetzen.</b> Damit gehen alle gespreicherten Inhalte verloren.</p>
             <p>Willst Du wirklich alles löschen?</p>
+        </div>
+        <div id="inventory-dialog">
+            <form method="post" action="#">
+                <fieldset>
+                    <legend>Allgemein</legend>
+                    <input type="text" id="item_name" name="item_name" />
+                </fieldset>
+                <fieldset>
+                    <legend>Ausrüstungsart und -qualität</legend>
+                    <label for="item_type">Art:</label>
+                    <select id="item_type" name="item_type">
+                        <option value="Helmet">Helm</option>
+                        <option value="Weapon">Waffe</option>
+                        <option value="Armor">Rüstung</option>
+                        <option value="Artifact">Artefakt</option>
+                    </select>
+                    <label for="item_quality">Qualität:</label>
+                    <select id="item_quality" name="item_quality">
+                        <option value="4">einzigartig</option>
+                        <option value="3">legendär</option>
+                        <option value="2">episch</option>
+                        <option value="1">selten</option>
+                        <option value="0">gewöhnlich</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <legend>Ausrüstungsattribute</legend>
+                    <label for="item_level">Stufe:</label>
+                    <input type="text" name="item_level" id="item_level" />
+                </fieldset>
+                    <p>
+                    <input type="checkbox" id="item_attribute_1" name="item_attribute_1" />
+                    <select id="item_attribute_1_type" name="item_attribute_1_type" size="1">
+                        <option>NK</option>
+                        <option>FK</option>
+                        <option>empty</option>
+                    </select>
+                    <input type="text" id="item_attribute_1_value" name="item_attribute_1_value" />
+                </p>
+                <p>
+                    <input type="checkbox" id="item_attribute_2" name="item_attribute_2" />
+                    <select id="item_attribute_2_type" name="item_attribute_2_type" size="1">
+                        <option>NK</option>
+                        <option>FK</option>
+                        <option>empty</option>
+                    </select>
+                    <input type="text" id="item_attribute_2_value" name="item_attribute_1_value" />
+                </p>
+                <p>
+                    <input type="checkbox" id="item_attribute_3" name="item_attribute_3" />
+                    <select id="item_attribute_3_type" name="item_attribute_3_type" size="1">
+                        <option>NK</option>
+                        <option>FK</option>
+                        <option>empty</option>
+                    </select>
+                    <input type="text" id="item_attribute_3_value" name="item_attribute_3_value" />
+                </p>
+                <label for="item_level">Stufe:</label>
+                <input type="submit" id="delete_item" name="delete_item" value="Löschen" />
+            </form>
         </div>
         <footer>
             <p class="text-right">Ein Tool der <a href="https://github.com/codehelden" title="Codehelden Github-Seite"><img src="assets/codehelden_75x75.png" alt="Logo der Codehelden" height="75" width="75" /></a>.<br />Projekt-, Quellcode- und Webseitenhosting von <a href="https://github.com/"><img src="assets/octocat_75x75.png" alt="Githubs Octocat" height="75" width="75" /></a>.</p>

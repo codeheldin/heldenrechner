@@ -12,7 +12,8 @@ div#main_tabs {
 div#player-rename-dialog,
 div#backup-dialog,
 div#restore-dialog,
-div#reset-dialog
+div#reset-dialog,
+div#inventory-dialog
 {
     display: none;
 }
