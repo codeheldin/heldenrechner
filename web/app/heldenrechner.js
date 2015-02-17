@@ -286,12 +286,21 @@
                     step: 1,
                     numberFormat: 'n'
                 });
+                $('#inventory-dialog div[data-class="buttonset"]').buttonset();
+                $('#inventory-dialog input[name="item_name"]').css('width', '90%');
+                $('#inventory-dialog input[data-type="percent"]').css({
+                    width: '6em',
+                    marginLeft: '1.5em',
+                    marginRight: '0.75em',
+                    textAlign: 'right'
+                });
+                $('#inventory-dialog input[data-inputmask]').inputmask();
             }
         });
     };
     
     __.prepare_forms = function() {
-        $('input[type="text"]').addClass('ui-widget ui-widget-content ui-corner-all');
+        $('input[type="text"]').addClass('ui-widget ui-widget-content ui-corner-all').css('padding', '0.333em');
         $('form#new_player_form').on('submit', function(event) {
             event.preventDefault();
             heldenrechner.add_mandant($('#new_player_name', this).val());
